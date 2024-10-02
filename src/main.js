@@ -1,15 +1,19 @@
-
+import Phaser from "phaser";
+import Preloader from "./states/Preload";
+import Menu from "./states/Menu";
+import Game from "./states/Game";
+import GameOver from "./states/GameOver"
 
 let config = {
-    width: 640,
-    height: 960,
-    scene: [Preload,Menu,Game],
+    width: window.innerWidth,
+    height: window.innerHeight,
+    scene: [Preloader,Menu,Game,GameOver],
     scale:{
-        mode: Phaser.Scale.FIT_PERFECT,
-        autoCenter: Phaser.Scale.ALIGN
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
     },
     physics:{
-        default : 'arcades'
+        default : 'arcade'
     }
 };
 new Phaser.Game(config);

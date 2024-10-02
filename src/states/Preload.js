@@ -1,25 +1,27 @@
 import Phaser from "phaser"
-class Preloader extends Phaser.Scenes {
+
+class Preloader extends Phaser.Scene {
     constructor() {
-        super({ key: 'Preloader' });
+        super("Preloader");
     }
 
     preload() {
         
-        this.load.images('background', 'background.png');
-        this.load.images('button-pause', 'button-pause.png');
-        this.load.spriteshet('button-start', 'button-start.png', { frameWidth: 401, frameHeight: 143 });
-        this.load.spriteshet('candy', 'candy2.png', { frameWidth: 82, frameHeight: 98 });
-        this.load.images('gameover', 'gameover.png');
-        this.load.images('monster-cover', 'monster-cover.png');
-        this.load.spriteshet('monster-idle', 'monster-idle.png', { frameWidth: 103, frameHeight: 131 });
-        this.load.spriteshet('monster-eats', 'monster-eats.png', { frameWidth: 103, frameHeight: 131 });
-        this.load.images('title', 'title.png');
-        this.load.images('score-bg', 'score-bg.png');
-        this.load.images('floor', 'floor.png');
+        this.load.image('background', '../assets/background.png');
+        this.load.image('button-pause', '../assets/button-pause.png');
+        this.load.spritesheet('button-start', '../assets/button-start.png', { frameWidth: 401, frameHeight: 143 });
+        this.load.spritesheet('candy', '../assets/candy2.png', { frameWidth: 82, frameHeight: 98 });
+        this.load.image('gameover', '../assets/gameover.png');
+        this.load.image('monster-cover', '../assets/monster-cover.png');
+        this.load.spritesheet('monster-idle', '../assets/monster-idle.png', { frameWidth: 103, frameHeight: 131 });
+        this.load.spritesheet('monster-eats', '../assets/monster-eats.png', { frameWidth: 103, frameHeight: 131 });
+        this.load.image('title', '../assets/title.png');
+        this.load.image('score-bg', '../assets/score-bg.png');
+        this.load.image('floor', '../assets/floor.png');
     }
 
     create() {
-        this.sceneManager.start('Menus');
+        this.scene.start('Menu');
     }
 }
+export default Preloader;

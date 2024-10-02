@@ -1,6 +1,8 @@
-class Menu extends Phaser.Scenes {
+import Phaser from "phaser";
+
+class Menu extends Phaser.Scene {
     constructor() {
-        super({ key: 'Menu' });
+        super('Menu');
         this.bg = null;
         this.title = null;
         this.btnStart = null;
@@ -8,18 +10,21 @@ class Menu extends Phaser.Scenes {
     }
 
     create() {
-        this.bg = this.add.sprite.create(0, 0, 'background').setOrigin(0, 0);
-        this.title = this.add.sprite.create(0, 0, 'title').setOrigin(0, 0);
-        this.cover = this.add.sprite.create(0, 0, 'monster-cover').setOrigin(0, 0);
-        this.cover.y = this.game.config.data.height - this.cover.height;
-        this.btnStart = this.add.sprite.create(0,0, 'button-start')
-            .on('pointerdown', () => this.startGame()) 
-            .setorigin(0, 0);
+        this.bg = this.add.sprite(0, 0, 'background').setOrigin(0, 0);
+        this.title = this.add.sprite(0, 0, 'title').setOrigin(0, 0);
+        this.cover = this.add.sprite(0, 0, 'monster-cover').setOrigin(0, 0);
+        this.cover.y = this.game.config.height - this.cover.height;
+        this.btnStart = this.add.sprite(0,0, 'button-start')
+            .setInteractive()
+            .on('pointerdown', function(pointer) { this.startGame(); }, this)
+            .setOrigin(0, 0);
         this.btnStart.x = this.game.config.width - this.btnStart.width;
-        this.btnStart.y = this.game.config.data.height - this.btnStart.height;
+        this.btnStart.y = this.game.config.height - this.btnStart.height;
     }
 
     startGame() {
-        this.sceneManager.start('Games');
+        this.scene.start('Game');
     }
 }
+
+export default Menu;
